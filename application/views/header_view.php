@@ -29,7 +29,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;YIT Works</a>
+          <a class="brand active" href="home">&nbsp;&nbsp;&nbsp;&nbsp;YIT Works</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
 				<li><a href="home">Calendar</a></li>

@@ -9,9 +9,7 @@
 	<script type='text/javascript' src="assets/js/bootstrap-datepicker.js"></script>
 	<script>
 		$(function(){
-			$('#dp1, #dp2, #dp3').datepicker({
-				format: 'mm-dd-yyyy'
-			});
+			$('#dp1, #dp2, #dp3').datepicker({});
 		});
 	</script>
 	<script>

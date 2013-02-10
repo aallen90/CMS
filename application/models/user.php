@@ -99,4 +99,20 @@ Class User extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->update('users', $data);
 	}
+	
+	function assigntask()
+	{
+		$data = array('tech' => $_POST['techassign'], 'client' => $_POST['clientassign'], 'description' => $_POST['descripassign'], 'activation' => $_POST['dateassign'], 'status' => 'active');
+		$this -> db -> insert('tasks', $data);
+	}
+	
+	function completetask()
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$data = array('tech' => $session_data['username'], 'status' => 'completed', 'client' => $_POST['clientcomplete'], 'activation' => $_POST['startdate'], 'starttime' => $_POST['starttime'], 'finishdate' => $_POST['finishdate'], 'finishtime' => $_POST['finishtime'], 'tasktype' => $_POST['tasktype'], 'description' => $_POST['descripcomplete']);
+		$this -> db -> insert('tasks', $data);
+	}
+	
+	
+	
 }?>

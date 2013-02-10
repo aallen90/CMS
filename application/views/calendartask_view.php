@@ -1,5 +1,5 @@
 <div class="span4"><h2>Tasks</h2>
-<h4><?php $selectedday=getdate();
+<h4 id="selectedDay"><?php $selectedday=getdate();
 			echo "$selectedday[month] $selectedday[mday], $selectedday[year]" ?></h4>
 		<h5>Austin</h5>
 		<i class="icon-chevron-right"></i> Created calendar <a href="#verifyTask" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br>

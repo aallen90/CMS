@@ -17,9 +17,16 @@ class Tasks extends CI_Controller
 			$data['username'] = $session_data['username'];
 			$data['firstname'] = $session_data['firstname'];
 			$data['usertype'] = $session_data['usertype'];
+			$this -> load -> model('user');
+			$data['emps'] = $this->user->viewemployees();
+			$data['clients'] = $this->user->viewclients();
 			$this->load->view('header_view', $data);
-			$this->load->view('taskcomplete_view', $data);
-			$this->load->view('footer_view', $data);
+			if ($session_data['usertype'] == 'admin') //loads the task assignment if admin
+			{
+				$this->load->view('taskassign_view', $data);
+			}
+				$this->load->view('taskcomplete_view', $data);
+				$this->load->view('footer_view', $data);
 		}
 		else
 		{
@@ -34,4 +41,30 @@ class Tasks extends CI_Controller
 		session_destroy();
 		redirect('login', 'refresh');
 	}
+	
+	function assigntask()
+	{
+		$this->load->model('user');
+		$this->user->assigntask();
+		redirect('tasks', 'refresh');
+	}
+	
+	function completetask()
+	{
+		$this->load->model('user');
+		$this->user->completetask();
+		redirect('tasks', 'refresh');
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }?>

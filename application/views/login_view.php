@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <title>Sign in &middot; YIT Works</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="YIT Works for Your Networks!">
 <meta name="author" content="">
+<meta name="google-site-verification" content="DjMm8UiT998a3CCGXoTfvRfbkDC1rv7FhbLikYG7JI0" />
 
 <!-- Le styles -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
