@@ -64,10 +64,7 @@ $(document).ready(function () {
             end: new Date(y, m, d + 1, 22, 30),
             allDay: false
         }]
-    });
-    dayClick: function(date, jsEvent) {
-        
-    }
+    });
 });
 
 
