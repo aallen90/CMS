@@ -1,20 +1,25 @@
 <div class="span4"><h2>Tasks</h2>
 <h4 id="selectedDay"><?php $selectedday=getdate();
-			echo "$selectedday[month] $selectedday[mday], $selectedday[year]" ?></h4>
-		<h5>Austin</h5>
-		<i class="icon-chevron-right"></i> Created calendar <a href="#verifyTask" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br>
-		<i class="icon-check"></i> Created login<br>
-		<a href="#assignModal" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
-		
-		<h5>John</h5>
-		<i class="icon-chevron-right"></i> Fixed Hag-Ford printer issues <a href="#verifyTask" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br>
-		<a href="#assignModal" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
-		
-		<h5>Joe</h5>
-		<i class="icon-check"></i> Fixed Fax connections in office. Setup Body shop printers and fax.<br>
-		<i class="icon-check"></i> Fixed Jack's PC, internet explorer settings had changed. I set them back.<br>
-		<i class="icon-check"></i> Pulled wire for 1 user, moved sales people and others to temporary spaces.<br>
-		<a href="#assignModal" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
+		echo "$selectedday[month] $selectedday[mday], $selectedday[year]" ?></h4>
+		<?php foreach ($emps as $emp) {?>
+			<h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
+			<?php foreach ($tasks as $task) {?>
+			<?php if($task->tech == $emp->username)
+						{		
+							if($task->status == 'completed')
+							{
+								?><i class="icon-chevron-right"></i> <?php echo $task->description; ?> <a href="#verifyTask" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+							}
+							elseif($task->status == 'verified')
+							{
+								?><i class="icon-check"></i> <?php echo $task->description; ?><br><?php
+							}
+						}?>
+			
+			<?php } if($emp->finishdate == 'Active') { ?>
+			
+			<a href="#assignModal" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
+		<?php } } ?>
 		</div>
     </div>
 	

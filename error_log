@@ -62,3 +62,37 @@
 [31-Jan-2013 17:34:32] PHP Parse error:  syntax error, unexpected $end in /home3/yitworks/public_html/application/views/taskassign_view.php on line 46
 [02-Feb-2013 17:28:31] PHP Parse error:  syntax error, unexpected ',' in /home3/yitworks/public_html/application/views/taskcomplete_view.php on line 10
 [02-Feb-2013 17:28:33] PHP Parse error:  syntax error, unexpected ',' in /home3/yitworks/public_html/application/views/taskcomplete_view.php on line 10
+[12-Feb-2013 19:01:04] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:01:07] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:01:16] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:01:16] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:01:17] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:01:36] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:01:39] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:04:15] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:04:26] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:04:28] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:04:38] PHP Fatal error:  Call to undefined method User::showtask() in /home3/yitworks/public_html/application/controllers/home.php on line 21
+[12-Feb-2013 19:04:39] PHP Fatal error:  Call to undefined method User::showtask() in /home3/yitworks/public_html/application/controllers/home.php on line 21
+[12-Feb-2013 19:04:51] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:04:52] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:05:01] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:05:12] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:05:13] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:05:14] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:05:15] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:05:32] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home3/yitworks/public_html/application/models/user.php on line 120
+[12-Feb-2013 19:06:44] PHP Fatal error:  Call to undefined method User::showtask() in /home3/yitworks/public_html/application/controllers/home.php on line 21
+[12-Feb-2013 19:11:22] PHP Parse error:  syntax error, unexpected '}', expecting ';' or '{' in /home3/yitworks/public_html/application/models/user.php on line 123
+[12-Feb-2013 19:11:23] PHP Parse error:  syntax error, unexpected '}', expecting ';' or '{' in /home3/yitworks/public_html/application/models/user.php on line 123
+[12-Feb-2013 19:13:57] PHP Parse error:  syntax error, unexpected '}' in /home3/yitworks/public_html/application/models/user.php on line 123
+[12-Feb-2013 19:13:59] PHP Parse error:  syntax error, unexpected '}' in /home3/yitworks/public_html/application/models/user.php on line 123
+[12-Feb-2013 20:23:13] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home3/yitworks/public_html/application/views/calendartask_view.php on line 12
+[12-Feb-2013 20:23:15] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home3/yitworks/public_html/application/views/calendartask_view.php on line 12
+[12-Feb-2013 20:31:24] PHP Parse error:  syntax error, unexpected T_ECHO in /home3/yitworks/public_html/application/views/calendartask_view.php on line 11
+[12-Feb-2013 20:31:26] PHP Parse error:  syntax error, unexpected T_ECHO in /home3/yitworks/public_html/application/views/calendartask_view.php on line 11
+[12-Feb-2013 21:01:20] PHP Parse error:  syntax error, unexpected $end in /home3/yitworks/public_html/application/views/calendartask_view.php on line 210
+[12-Feb-2013 22:14:53] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home3/yitworks/public_html/application/views/calendartask_view.php on line 5
+[12-Feb-2013 22:17:15] PHP Parse error:  syntax error, unexpected '}' in /home3/yitworks/public_html/application/views/calendartask_view.php on line 22
+[12-Feb-2013 22:19:53] PHP Parse error:  syntax error, unexpected '}' in /home3/yitworks/public_html/application/views/calendartask_view.php on line 22
+[12-Feb-2013 22:19:55] PHP Parse error:  syntax error, unexpected '}' in /home3/yitworks/public_html/application/views/calendartask_view.php on line 22
