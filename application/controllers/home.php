@@ -20,6 +20,7 @@ class Home extends CI_Controller
 			$this->load->model('user');
 			$data['tasks'] = $this->user->showtask();
 			$data['emps'] = $this->user->viewemployees();
+			$data['clients'] = $this->user->viewclients();
 			$this->load->view('home_view', $data);
 			$this->load->view('calendartask_view', $data);
 		}
@@ -33,6 +34,20 @@ class Home extends CI_Controller
 	function calendar()
 	{
 		
+	}
+	
+	function assigntask()
+	{
+		$this->load->model('user');
+		$this->user->assigntask();
+		redirect('home', 'refresh');
+	}
+	
+	function verifytask()
+	{
+		$this->load->model('user');
+		$this->user->verifytask();
+		redirect('home', 'refresh');
 	}
 	
 	function logout()

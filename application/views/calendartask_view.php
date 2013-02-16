@@ -8,7 +8,7 @@
 						{		
 							if($task->status == 'completed')
 							{
-								?><i class="icon-chevron-right"></i> <?php echo $task->description; ?> <a href="#verifyTask" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+								?><i class="icon-chevron-right"></i> <?php echo $task->description; ?> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
 							}
 							elseif($task->status == 'verified')
 							{
@@ -18,166 +18,135 @@
 			
 			<?php } if($emp->finishdate == 'Active') { ?>
 			
-			<a href="#assignModal" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
+			<a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
 		<?php } } ?>
 		</div>
     </div>
 	
 	<!-- Modal -->
-<div id="assignModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelassign" aria-hidden="true">
+<?php foreach($emps as $emp) { ?>
+<div id="assignModal<?php echo $emp->id ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelassign<?php echo $emp->id ?>" aria-hidden="true">
+<form class=" form-horizontal" action="home/assigntask" method="post">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-    <h3 id="myModalLabelassign">Assign task to [Employee]</h3>
+    <h3 id="myModalLabelassign<?php echo $emp->id ?>">Assign task to <?php echo $emp->firstname ?></h3>
   </div>
   <div class="modal-body">
-    <form class=" form-horizontal"><h5>Fill out the form below to assign a task to [Employee].</h5>
+    <h5>Fill out the form below to assign a task to <?php echo $emp->firstname ?>.</h5>
 		<div class="control-group">
 			<label class="control-label" for="clientassign">Select a Client</label>
 			<div class="controls">
-				<select name="clientassign" id="clientassign">
-					<option>Haggerty Buick</option>
-					<option>Haggerty Chevrolet</option>
-					<option>Haggerty Ford</option>
+				<input type="hidden" name="techassign" value="<?php echo $emp->username ?>">
+				<select name="clientassign" id="clientassign<?php echo $emp->id ?>">
+					<?php foreach($clients as $client) {
+						if($client->finishdate == 'Active') {
+							echo '<option value="', $client->username, '">', $client->firstname, '</option>'; 
+						}
+					} ?>
 				</select>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="descripassign">Description</label>
 			<div class="controls">
-				<textarea name="descripassign" id="descripassign" rows="4" placeholder="Please enter in a description..."></textarea>
+				<textarea name="descripassign" id="descripassign<?php echo $emp->id ?>" rows="4" placeholder="Please enter in a description..."></textarea>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="dateassign">Activate on</label>
 			<div class="controls">
-				<div name="dateassign" id="dateassign" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
-					<input class="span2" type="date"></div>
+				<div id="dateassign" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
+					<input class="span2" name="dateassign" type="date"></div>
 			</div>
 		</div>
-	</form>
-  </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Assign</button>
+	<input type="submit" value="Assign" class="btn btn-primary" />
   </div>
+  </div>
+ </form> 
 </div>
+<?php } ?>
 
-<div id="verifyTask" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelverify" aria-hidden="true">
+<?php foreach($tasks as $task) { ?>
+<div id="verifyTask<?php echo $task->taskid ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelverify" aria-hidden="true">
+<form class="form-horizontal" action="home/verifytask" method="post">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
     <h3 id="myModalLabelverify">Verify</h3>
   </div>
   <div class="modal-body">
-    <form class="form-horizontal"><h5>[FirstName]'s task</h5>
-					<div class="control-group">
-						<label class="control-label" for="clientcomplete">at</label>
-						<div class="controls">
-							<select name="clientcomplete" id="clientcomplete">
-								<option>Haggerty Buick</option>
-								<option>Haggerty Chevrolet</option>
-								<option>Haggerty Ford</option>
-							</select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="startdate">On</label>
-						<div class="controls">
-							<div name="startdate" id="startdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
-							<input class="span2" type="date"></div>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="starttime">Start Time</label>
-						<div name="starttime" id="starttime" class="controls">
-							<select class="span1">
-								<option>12</option>
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-								<option>04</option>
-								<option>05</option>
-								<option>06</option>
-								<option>07</option>
-								<option>08</option>
-								<option>09</option>
-								<option>10</option>
-								<option>11</option>
-							</select>
-							<select class="span1">
-								<option>00</option>
-								<option>30</option>
-							</select>
-							<select class="span1">
-								<option>AM</option>
-								<option>PM</option>
-							</select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="finishdate">Till</label>
-						<div class="controls">
-							<div name="finishdate" id="finishdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
-							<input class="span2" type="date" placeholder="Select a date"></div>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="finishtime">Finish Time</label>
-						<div name="finishtime" id="finishtime" class="controls">
-							<select class="span1">
-								<option>12</option>
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-								<option>04</option>
-								<option>05</option>
-								<option>06</option>
-								<option>07</option>
-								<option>08</option>
-								<option>09</option>
-								<option>10</option>
-								<option>11</option>
-							</select>
-							<select class="span1">
-								<option>00</option>
-								<option>30</option>
-							</select>
-							<select class="span1">
-								<option>AM</option>
-								<option>PM</option>
-							</select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="tasktype">Type</label>
-						<div class="controls">
-							<select name="tasktype" id="tasktype">
-								<option>Project</option>
-								<option>Maintenence</option>
-							</select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="descripcomplete">Description</label>
-						<div class="controls">
-						<textarea name="descripcomplete" id="descripcomplete" rows="4" placeholder="Created calendar"></textarea>
-							<table class="span3">
-								<tr><td>
-									<label class="checkbox" id="build" rel="tooltip" data-placement="bottom" title="Taking out of box, setup on desk. Configured PC to Domain. Registered PC, Ran Updates, etc..."><input type="checkbox" > PC-Build</label>
-									</td><td>
-									<label class="checkbox" id="backup" rel="tooltip" data-placement="bottom" title="Backed up user data to the cloud/external"><input type="checkbox" checked> Backup</label>
-								</td></tr>
-							</table>
-						</div>
-					</div>
-				</form>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-success">Verify</button>
-  </div>
+    <h5><?php echo $task->firstname ?>'s task</h5>
+		<div class="control-group">
+			<label class="control-label" for="clientassign">Select a Client</label>
+			<div class="controls">
+				<input name="taskid" type="hidden" value="<?php echo $task->taskid ?>">
+				<select name="clientassign" id="clientassign<?php echo $emp->id ?>">
+					<?php foreach($clients as $client) {
+						if($client->finishdate == 'Active') { ?>
+							<option <?php if($task->client == $client->username){ echo 'selected';} ?> value="<?php echo $client->username, '">', $client->firstname, '</option>'; 
+						}
+					} ?>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="startdate">On</label>
+			<div class="controls">
+				<div name="startdate" id="startdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
+				<input class="span2" type="date" value="<?php echo $task->activation ?>"></div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="starttime">Start Time</label>
+			<div name="starttime" id="starttime" class="controls">
+				<input name="starttime" type="time" class="span2" value="<?php echo $task->starttime ?>"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="finishdate">Till</label>
+			<div class="controls">
+				<div name="finishdate" id="finishdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
+				<input class="span2" type="date" value="<?php echo $task->finishdate ?>"></div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="finishtime">Finish Time</label>
+			<div name="finishtime" id="finishtime" class="controls">
+				<input name="finishtime" type="time" class="span2" value="<?php echo $task->finishtime ?>"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="tasktype">Type</label>
+			<div class="controls">
+				<select name="tasktype" id="tasktype">
+					<option <?php if($task->tasktype == 'Project'){ echo 'selected';} ?>>Project</option>
+					<option <?php if($task->tasktype == 'Maintenance'){ echo 'selected';} ?>>Maintenence</option>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="descripcomplete">Description</label>
+			<div class="controls">
+			<textarea name="descripcomplete" id="descripcomplete" rows="4"><?php echo $task->description ?></textarea>
+				<table class="span3">
+					<tr><td>
+						<label class="checkbox" id="build" rel="tooltip" data-placement="bottom" title="Taking out of box, setup on desk. Configured PC to Domain. Registered PC, Ran Updates, etc..."><input type="checkbox" > PC-Build</label>
+						</td><td>
+						<label class="checkbox" id="backup" rel="tooltip" data-placement="bottom" title="Backed up user data to the cloud/external"><input type="checkbox" checked> Backup</label>
+					</td></tr>
+				</table>
+			</div>
+		</div>
 </div>
-	
-	</div> <!-- /container -->
+<div class="modal-footer">
+	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	<input type="submit" value="Verify" class="btn btn-success">
+</div>
+</form>
+</div>
+<?php } ?>
+</div> <!-- /container -->
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

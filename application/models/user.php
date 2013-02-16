@@ -115,26 +115,18 @@ Class User extends CI_Model
 	
 	function showtask()
 	{
-		$this -> db -> select('taskid, status, tech, client, description, activation, starttime, finishdate, finishtime, tasktype, hours');
-		$this -> db -> from('tasks');
+		$this -> db -> select('t.taskid, t.status, t.tech, t.client, t.description, t.activation, t.starttime, t.finishdate, t.finishtime, t.tasktype, t.hours, u.firstname, u.username');
+		$this -> db -> from('tasks AS t, users AS u');
+		$this -> db -> where('u.username = t.tech');
 		$query = $this -> db -> get();
 		
 		return $query->result();
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	function verifytask()
+	{
+        $data = array('status' => 'verified');
+        $this->db->where('taskid', $_POST['taskid']);
+        $this->db->update('tasks', $data);
+    }
 }?>

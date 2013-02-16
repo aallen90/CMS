@@ -59,7 +59,7 @@ $(document).ready(function () {
             end: new Date(y, m, d, 14, 0),
             allDay: false
         }, {
-            title: 'Christmas Party',
+            title: 'Valentines Party',
             start: new Date(y, m, d + 1, 19, 0),
             end: new Date(y, m, d + 1, 22, 30),
             allDay: false
