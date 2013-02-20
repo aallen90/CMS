@@ -23,6 +23,7 @@ class Home extends CI_Controller
 			$data['clients'] = $this->user->viewclients();
 			$this->load->view('home_view', $data);
 			$this->load->view('calendartask_view', $data);
+			$this->load->view('footer_view', $data);
 		}
 		else
 		{

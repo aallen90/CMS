@@ -491,19 +491,4 @@
   </div>
   </form>
 </div>
-
-
-
-
-
-
-
-</div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-	<script src="assets/js/bootstrap.js"></script>
-  </body>
-</html>
+</div><br> <!-- /container -->

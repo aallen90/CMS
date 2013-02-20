@@ -69,3 +69,4 @@
 					</div>
 				</form>
 		</div> <!-- /Complete Task -->
+	</div> <!-- /Row -->

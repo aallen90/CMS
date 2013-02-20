@@ -19,6 +19,7 @@ class Reports extends CI_Controller
 			$data['usertype'] = $session_data['usertype'];
 			$this->load->model('user');
 			$this->load->view('reports_view', $data);
+			$this->load->view('footer_view', $data);
 		}
 		else
 		{
