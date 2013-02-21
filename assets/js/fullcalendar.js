@@ -32,7 +32,7 @@ var defaults = {
 	
 	// editing
 	editable: true,
-	disableDragging: false,
+	disableDragging: true,
 	disableResizing: false,
 	
 	allDayDefault: true,

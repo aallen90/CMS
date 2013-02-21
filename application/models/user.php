@@ -125,7 +125,7 @@ Class User extends CI_Model
 	
 	function verifytask()
 	{
-        $data = array('status' => 'verified');
+        $data = array('status' => 'verified', 'tech' => $_POST['techverify'], 'client' => $_POST['clientassign'], 'description' => $_POST['descripcomplete'], 'activation' => $_POST['startdate'], 'starttime' => $_POST['starttime'], 'finishdate' => $_POST['finishdate'], 'finishtime' => $_POST['finishtime'], 'tasktype' => $_POST['tasktype']);
         $this->db->where('taskid', $_POST['taskid']);
         $this->db->update('tasks', $data);
     }

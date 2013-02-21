@@ -81,6 +81,7 @@
 				<label class="control-label" for="clientassign">Select a Client</label>
 				<div class="controls">
 					<input name="taskid" type="hidden" value="<?php echo $task->taskid ?>">
+					<input name="techverify" type="hidden" value="<?php echo $task->tech ?>">
 					<select name="clientassign" id="clientassign<?php echo $emp->id ?>">
 						<?php foreach($clients as $client) {
 							if($client->finishdate == 'Active') { ?>
@@ -93,8 +94,8 @@
 			<div class="control-group">
 				<label class="control-label" for="startdate">On</label>
 				<div class="controls">
-					<div name="startdate" id="startdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
-					<input class="span2" type="date" value="<?php echo $task->activation ?>"></div>
+					<div  id="startdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
+					<input name="startdate" class="span2" type="date" value="<?php echo $task->activation ?>"></div>
 				</div>
 			</div>
 			<div class="control-group">
@@ -106,8 +107,8 @@
 			<div class="control-group">
 				<label class="control-label" for="finishdate">Till</label>
 				<div class="controls">
-					<div name="finishdate" id="finishdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
-					<input class="span2" type="date" value="<?php echo $task->finishdate ?>"></div>
+					<div id="finishdate" class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span>
+					<input name="finishdate" class="span2" type="date" value="<?php echo $task->finishdate ?>"></div>
 				</div>
 			</div>
 			<div class="control-group">
