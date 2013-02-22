@@ -33,7 +33,7 @@ $(document).ready(function () {
         },
         editable: true,
         events: [
-		<?php
+		<?php if($username == 'admin'){
 		foreach ( $emps as $emp )
 		{
 			foreach ( $tasks as $task )
@@ -49,6 +49,20 @@ $(document).ready(function () {
 				} //$task->tech == $emp->username
 			} //$tasks as $task
 		} //$emps as $emp
+		} //$username == 'admin'
+		else
+		foreach ( $tasks as $task )
+		{
+			if ( $task->tech == $username )
+			{
+	?>
+				{
+					title: '<?php echo substr($task->description, 0, 15), '...'; ?>',
+					start: '<?php echo $task->activation; ?>'                        // need to integrate time columns and make the dayclick() event change side tasks
+				},
+			<?php
+			} //$task->tech == $emp->username
+		} //$tasks as $task
 		?>
 		]
     });

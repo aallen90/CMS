@@ -118,6 +118,8 @@ Class User extends CI_Model
 		$this -> db -> select('t.taskid, t.status, t.tech, t.client, t.description, t.activation, t.starttime, t.finishdate, t.finishtime, t.tasktype, t.hours, u.firstname, u.username');
 		$this -> db -> from('tasks AS t, users AS u');
 		$this -> db -> where('u.username = t.tech');
+		$this -> db -> order_by("tech", "desc");
+		$this -> db -> order_by("status", "asc");
 		$query = $this -> db -> get();
 		
 		return $query->result();
