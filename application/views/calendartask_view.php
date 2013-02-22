@@ -33,7 +33,7 @@
 						{		
 							if($task->status == 'completed')
 							{
-								?><i class="icon-chevron-right"></i> <?php echo $task->description; ?> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+								?><i class="icon-chevron-right"></i> <?php echo $task->description; ?><br><?php
 							}
 							elseif($task->status == 'verified')
 							{
@@ -41,12 +41,11 @@
 							}
 							elseif($task->status == 'active')
 							{
-								?><i class="icon-bell"></i> <?php echo $task->description; ?><br><?php
+								?><i class="icon-bell"></i> <?php echo $task->description; ?>  <a href="tasks" role="button" class="btn btn-small btn-warning">Complete</a><!-- Modal Trigger --><br><?php
 							}
-						}?>
-					<?php } if($emp->finishdate == 'Active' && $emp->username == $username) { ?>
-					<a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
-				<?php } } ?>
+						} 
+					}
+				} ?>
 		</div> <!-- /Tasks -->
 	</div> <!-- /Row -->
 
