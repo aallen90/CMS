@@ -110,7 +110,16 @@ Class User extends CI_Model
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data = array('tech' => $session_data['username'], 'status' => 'completed', 'client' => $_POST['clientcomplete'], 'activation' => $_POST['startdate'], 'starttime' => $_POST['starttime'], 'finishdate' => $_POST['finishdate'], 'finishtime' => $_POST['finishtime'], 'tasktype' => $_POST['tasktype'], 'description' => $_POST['descripcomplete']);
-		$this -> db -> insert('tasks', $data);
+		
+		if($_POST['taskid'] == 'ffa')
+		{
+			$this -> db -> insert('tasks', $data);
+		}
+		else
+		{
+			$this -> db -> where('taskid', $_POST['taskid']);
+			$this -> db -> update('tasks', $data);
+		}
 	}
 	
 	function showtask()

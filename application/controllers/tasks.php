@@ -18,6 +18,7 @@ class Tasks extends CI_Controller
 			$data['firstname'] = $session_data['firstname'];
 			$data['usertype'] = $session_data['usertype'];
 			$this -> load -> model('user');
+			$data['tasks'] = $this->user->showtask();
 			$data['emps'] = $this->user->viewemployees();
 			$data['clients'] = $this->user->viewclients();
 			$this->load->view('header_view', $data);

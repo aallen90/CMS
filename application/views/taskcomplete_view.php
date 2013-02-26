@@ -2,6 +2,22 @@
 			<h2>Complete a Task</h2>
 				<form class="form-horizontal" action="tasks/completetask" method="post"><h5>Fill out the form below to complete a task.</h5>
 					<div class="control-group">
+						<label class="control-label" for="taskid">Assigned task</label>
+						<div class="controls">
+							<select name="taskid">
+								<option value="ffa">Free-For-All</option>
+								<?php foreach($tasks as $task) {
+								    if($task->tech == $username) {	
+										if($task->status == 'active')
+										{
+											?><option value="<?php echo $task->taskid ?>"> <?php echo $task->description; ?> </option><?php
+										}
+									}
+								} ?>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
 						<label class="control-label" for="clientcomplete">Select the Client</label>
 						<div class="controls">
 							<select name="clientcomplete" id="clientcomplete">
