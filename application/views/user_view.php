@@ -8,6 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->

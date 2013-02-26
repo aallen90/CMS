@@ -9,6 +9,7 @@
 <meta name="google-site-verification" content="DjMm8UiT998a3CCGXoTfvRfbkDC1rv7FhbLikYG7JI0" />
 
 <!-- Le styles -->
+<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <style type="text/css">
 body {

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 <!-- Le styles -->
 <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="assets/css/fullcalendar.css" rel="stylesheet">

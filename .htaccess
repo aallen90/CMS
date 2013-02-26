@@ -1,3 +1,17 @@
 RewriteEngine on
 RewriteCond $1 !^(index\.php|assets|images|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 month"
+ExpiresByType image/jpeg "access 1 month"
+ExpiresByType image/gif "access 1 month"
+ExpiresByType image/png "access 1 month"
+ExpiresByType text/css "access 1 month"
+ExpiresDefault "access 14 days"
+</IfModule>
+## EXPIRES CACHING ##
+
+AddDefaultCharset UTF-8
