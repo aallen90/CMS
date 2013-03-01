@@ -28,6 +28,12 @@ var y = date.getFullYear();
 $('#calendar').fullCalendar ({
 	dayClick: function(date, allDay, jsEvent, view) {
 		$('#selectedDay').hide().text($.fullCalendar.formatDate( date, 'MMMM d, yyyy' )).slideDown(200);
+        alert(date);
+        $.post(
+            'url': 'tasks/get_tasks_for_day',
+            'data': $.fullCalendar.formatDate( date, 'MMMM d, yyyy' ),
+            'success': $('#selectedDay').html(data);
+        );
     },
 	header: {
 		left: 'prev,next today',

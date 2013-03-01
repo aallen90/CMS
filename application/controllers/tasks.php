@@ -55,17 +55,12 @@ class Tasks extends CI_Controller
 		$this->load->model('user');
 		$this->user->completetask();
 		redirect('tasks', 'refresh');
-	}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}?>
+    }
+
+    function get_tasks_for_day(date) {
+        $this->load->model('user');
+        $tasks = $this->user->show_task(date);
+        return json_encode($tasks);
+    }
+
+}?> // end task controller

@@ -1,28 +1,30 @@
 		<div class="span4"><h2>Tasks</h2>
 			<h4 id="selectedDay"><?php $selectedday=getdate();
 				echo "$selectedday[month] $selectedday[mday], $selectedday[year]" ?></h4>
-				<?php if($username == 'admin')
+            <div id="daily_tasks">
+            </div>
+                <?php if($username == 'admin')
 				{ ?>
-				<?php foreach ($emps as $emp) {?>
-					<h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
-					<?php foreach ($tasks as $task) {?>
-					<?php if($task->tech == $emp->username)
-						{		
-							if($task->status == 'completed')
-							{
-								?><i class="icon-chevron-right"></i> <?php echo $task->client, ' - ', $task->description; ?> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
-							}
-							elseif($task->status == 'verified')
-							{
-								?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
-							}
-							elseif($task->status == 'active')
-							{
-								?><i class="icon-bell"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
-							}
-						}?>
-					<?php } if($emp->finishdate == 'Active') { ?>
-					<a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
+                    <?php foreach ($emps as $emp) {?>
+                        <h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
+                        <?php foreach ($tasks as $task) {?>
+                        <?php if($task->tech == $emp->username)
+                            {		
+                                if($task->status == 'completed')
+                                {
+                                    ?><i class="icon-chevron-right"></i> <?php echo $task->client, ' - ', $task->description; ?> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+                                }
+                                elseif($task->status == 'verified')
+                                {
+                                    ?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
+                                }
+                                elseif($task->status == 'active')
+                                {
+                                    ?><i class="icon-bell"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
+                                }
+                            }?>
+                        <?php } if($emp->finishdate == 'Active') { ?>
+                        <a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
 				<?php } } } ?>
 
 				<!-- If user -->
