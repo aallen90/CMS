@@ -10,15 +10,15 @@
 						{		
 							if($task->status == 'completed')
 							{
-								?><i class="icon-chevron-right"></i> <?php echo $task->description; ?> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+								?><i class="icon-chevron-right"></i> <?php echo $task->client, ' - ', $task->description; ?> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
 							}
 							elseif($task->status == 'verified')
 							{
-								?><i class="icon-check"></i> <?php echo $task->description; ?><br><?php
+								?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
 							}
 							elseif($task->status == 'active')
 							{
-								?><i class="icon-bell"></i> <?php echo $task->description; ?><br><?php
+								?><i class="icon-bell"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
 							}
 						}?>
 					<?php } if($emp->finishdate == 'Active') { ?>
@@ -33,15 +33,15 @@
 						{		
 							if($task->status == 'completed')
 							{
-								?><i class="icon-chevron-right"></i> <?php echo $task->description; ?><br><?php
+								?><i class="icon-chevron-right"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
 							}
 							elseif($task->status == 'verified')
 							{
-								?><i class="icon-check"></i> <?php echo $task->description; ?><br><?php
+								?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
 							}
 							elseif($task->status == 'active')
 							{
-								?><i class="icon-bell"></i> <?php echo $task->description; ?>  <a href="tasks" role="button" class="btn btn-small btn-warning">Complete</a><!-- Modal Trigger --><br><?php
+								?><i class="icon-bell"></i> <?php echo $task->client, ' - ', $task->description; ?>  <a href="tasks" role="button" class="btn btn-small btn-warning">Complete</a><!-- Modal Trigger --><br><?php
 							}
 						} 
 					}

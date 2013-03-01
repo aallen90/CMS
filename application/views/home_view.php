@@ -21,51 +21,54 @@
 
 <script>
 $(document).ready(function () {
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-        },
-        editable: true,
-        events: [
-		<?php if($username == 'admin'){
-		foreach ( $emps as $emp )
-		{
-			foreach ( $tasks as $task )
-			{
-				if ( $task->tech == $emp->username )
-				{
-		?>
-					{
-						title: '<?php echo $emp->firstname, ' - ', substr($task->description, 0, 5), '...'; ?>',
-						start: '<?php echo $task->activation; ?>'                        // need to integrate time columns and make the dayclick() event change side tasks
-					},
-				<?php
-				} //$task->tech == $emp->username
-			} //$tasks as $task
-		} //$emps as $emp
-		} //$username == 'admin'
-		else
+var date = new Date();
+var d = date.getDate();
+var m = date.getMonth();
+var y = date.getFullYear();
+$('#calendar').fullCalendar ({
+	dayClick: function(date, allDay, jsEvent, view) {
+		$('#selectedDay').hide().text($.fullCalendar.formatDate( date, 'MMMM d, yyyy' )).slideDown(200);
+    },
+	header: {
+		left: 'prev,next today',
+		center: 'title',
+		right: 'month,agendaWeek,agendaDay'
+	},
+	editable: true,
+	events: [
+	<?php if($username == 'admin'){
+	foreach ( $emps as $emp )
+	{
 		foreach ( $tasks as $task )
 		{
-			if ( $task->tech == $username )
+			if ( $task->tech == $emp->username )
 			{
 	?>
 				{
-					title: '<?php echo substr($task->description, 0, 15), '...'; ?>',
+					title: '<?php echo $emp->firstname, ' - ', substr($task->description, 0, 5), '...'; ?>',
 					start: '<?php echo $task->activation; ?>'                        // need to integrate time columns and make the dayclick() event change side tasks
 				},
 			<?php
 			} //$task->tech == $emp->username
 		} //$tasks as $task
-		?>
-		]
-    });
+	} //$emps as $emp
+	} //$username == 'admin'
+	else
+	foreach ( $tasks as $task )
+	{
+		if ( $task->tech == $username )
+		{
+?>
+			{
+				title: '<?php echo substr($task->description, 0, 15), '...'; ?>',
+				start: '<?php echo $task->activation; ?>'                        // need to integrate time columns and make the dayclick() event change side tasks
+			},
+		<?php
+		} //$task->tech == $emp->username
+	} //$tasks as $task
+	?>
+	]
+});
 });
 </script>	
 </head>
