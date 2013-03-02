@@ -33,7 +33,7 @@ var defaults = {
 	// editing
 	editable: true,
 	disableDragging: true,
-	disableResizing: false,
+	disableResizing: true,
 	
 	allDayDefault: true,
 	ignoreTimezone: true,

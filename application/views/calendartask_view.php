@@ -1,57 +1,86 @@
 		<div class="span4"><h2>Tasks</h2>
 			<h4 id="selectedDay"><?php $selectedday=getdate();
 				echo "$selectedday[month] $selectedday[mday], $selectedday[year]" ?></h4>
-            <div id="daily_tasks">
-            </div>
-                <?php if($username == 'admin')
+				<div id="dailytasks">
+				<?php if($username == 'admin')
 				{ ?>
-                    <?php foreach ($emps as $emp) {?>
-                        <h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
-                        <?php foreach ($tasks as $task) {?>
-                        <?php if($task->tech == $emp->username)
-                            {		
-                                if($task->status == 'completed')
-                                {
-                                    ?><i class="icon-chevron-right"></i> <?php echo $task->client, ' - ', $task->description; ?> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
-                                }
-                                elseif($task->status == 'verified')
-                                {
-                                    ?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
-                                }
-                                elseif($task->status == 'active')
-                                {
-                                    ?><i class="icon-bell"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
-                                }
-                            }?>
-                        <?php } if($emp->finishdate == 'Active') { ?>
-                        <a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
-				<?php } } } ?>
-
-				<!-- If user -->
+				<h5>Jerry</h5>
+				<?php foreach ($tasks as $task) {?>
+					<?php if($task->tech == 'admin')
+						{		
+							if($task->status == 'completed')
+							{
+								?><i class="icon-chevron-right"></i> <strong><?php echo $task->client ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs.'; ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+							}
+							elseif($task->status == 'verified')
+							{
+								?><i class="icon-check"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-mini btn-success" data-toggle="modal">Edit</a><br><?php
+							}
+						}
+					} ?>
 				<?php foreach ($emps as $emp) {?>
+					<h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
+					<?php foreach ($tasks as $task) {?>
+					<?php if($task->tech == $emp->username)
+						{		
+							if($task->status == 'completed')
+							{
+								?><i class="icon-chevron-right"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs.'; ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+							}
+							elseif($task->status == 'verified')
+							{
+								?><i class="icon-check"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-mini btn-success" data-toggle="modal">Edit</a><br><?php
+							}
+							elseif($task->status == 'active')
+							{
+								?><i class="icon-bell"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description; ?><br><?php
+							}
+						}?>
+					<?php } if($emp->finishdate == 'Active') { ?>
+					<a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
+				<?php } } } ?>
+				
+				<!-- If user -->
+				
+				<?php if($usertype == 'employee')
+				{
+					foreach ($emps as $emp) {?>
 					<h5><?php if($emp->finishdate == "Active"  && $emp->username == $username){echo $emp->firstname;} ?></h5>
 					<?php foreach ($tasks as $task) {?>
 					<?php if($task->tech == $emp->username && $task->tech == $username)
 						{		
 							if($task->status == 'completed')
 							{
-								?><i class="icon-chevron-right"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
+								?><i class="icon-chevron-right"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; ?></strong><br><?php
 							}
 							elseif($task->status == 'verified')
 							{
-								?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description; ?><br><?php
+								?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description, ' - ', $task->tasktype, ' - ' ?><strong><?php echo $task->hours, 'hrs.'; ?></strong><br><?php
 							}
 							elseif($task->status == 'active')
 							{
-								?><i class="icon-bell"></i> <?php echo $task->client, ' - ', $task->description; ?>  <a href="tasks" role="button" class="btn btn-small btn-warning">Complete</a><!-- Modal Trigger --><br><?php
+								?><i class="icon-bell"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description; ?>  <a href="tasks" role="button" class="btn btn-mini btn-warning">Complete</a><!-- Modal Trigger --><br><?php
 							}
 						} 
 					}
+				}
 				} ?>
+				
+				<!-- If client -->
+				<?php if($usertype == 'client') {
+				foreach ($tasks as $task) {
+					if($task->status == 'verified' && $task->client == $username)
+						{
+							?><i class="icon-check"></i> <?php echo $task->firstname, ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; ?></strong><br><?php
+						}
+					}
+				}
+				?>
+				</div> <!-- /dailytasks-->
 		</div> <!-- /Tasks -->
 	</div> <!-- /Row -->
 
-<!-- Assign Modal -->
+<!-- Assign Modal -->  
 <?php foreach($emps as $emp) { ?>
 <div id="assignModal<?php echo $emp->id ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelassign<?php echo $emp->id ?>" aria-hidden="true">
 	<form class=" form-horizontal" action="home/assigntask" method="post">

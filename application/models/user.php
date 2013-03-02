@@ -109,7 +109,12 @@ Class User extends CI_Model
 	function completetask()
 	{
 		$session_data = $this->session->userdata('logged_in');
-		$data = array('tech' => $session_data['username'], 'status' => 'completed', 'client' => $_POST['clientcomplete'], 'activation' => $_POST['startdate'], 'starttime' => $_POST['starttime'], 'finishdate' => $_POST['finishdate'], 'finishtime' => $_POST['finishtime'], 'tasktype' => $_POST['tasktype'], 'description' => $_POST['descripcomplete']);
+		$hours = $_POST['finishtime'] - $_POST['starttime'];
+		if($hours < '2:00:00')
+		{
+			$hours = '2';
+		}
+		$data = array('tech' => $session_data['username'], 'status' => 'completed', 'client' => $_POST['clientcomplete'], 'activation' => $_POST['startdate'], 'starttime' => $_POST['starttime'], 'finishdate' => $_POST['finishdate'], 'finishtime' => $_POST['finishtime'], 'tasktype' => $_POST['tasktype'], 'description' => $_POST['descripcomplete'], 'hours' => $hours);
 		
 		if($_POST['taskid'] == 'ffa')
 		{
@@ -122,12 +127,24 @@ Class User extends CI_Model
 		}
 	}
 	
-	function showtask(date)
+	function showtask()
 	{
 		$this -> db -> select('t.taskid, t.status, t.tech, t.client, t.description, t.activation, t.starttime, t.finishdate, t.finishtime, t.tasktype, t.hours, u.firstname, u.username');
 		$this -> db -> from('tasks AS t, users AS u');
 		$this -> db -> where('u.username = t.tech');
-		$this -> db -> where('t.activation = '.$date);
+		$this -> db -> order_by("tech", "desc");
+		$this -> db -> order_by("status", "asc");
+		$query = $this -> db -> get();
+		
+		return $query->result();
+	}
+	
+	function showtaskbydate($date)
+	{
+		$this -> db -> select('t.taskid, t.status, t.tech, t.client, t.description, t.activation, t.starttime, t.finishdate, t.finishtime, t.tasktype, t.hours, u.firstname, u.username');
+		$this -> db -> from('tasks AS t, users AS u');
+		$this -> db -> where('u.username = t.tech');
+		$this -> db -> where('t.activation', $date);
 		$this -> db -> order_by("tech", "desc");
 		$this -> db -> order_by("status", "asc");
 		$query = $this -> db -> get();

@@ -28,12 +28,14 @@ var y = date.getFullYear();
 $('#calendar').fullCalendar ({
 	dayClick: function(date, allDay, jsEvent, view) {
 		$('#selectedDay').hide().text($.fullCalendar.formatDate( date, 'MMMM d, yyyy' )).slideDown(200);
-        alert(date);
-        $.post(
-            'url': 'tasks/get_tasks_for_day',
-            'data': $.fullCalendar.formatDate( date, 'MMMM d, yyyy' ),
-            'success': $('#selectedDay').html(data);
-        );
+		date = $.fullCalendar.formatDate( date, 'yyyy-MM-dd' )
+		//alert(date);
+		$.post ({
+			url: "tasks/showtaskbydate(date)",
+			data: date,
+			success: $('#dailytasks').html(data),
+			}
+		);
     },
 	header: {
 		left: 'prev,next today',
@@ -47,31 +49,51 @@ $('#calendar').fullCalendar ({
 	{
 		foreach ( $tasks as $task )
 		{
-			if ( $task->tech == $emp->username )
+			if ( $task->tech == $emp->username)
 			{
 	?>
 				{
-					title: '<?php echo $emp->firstname, ' - ', substr($task->description, 0, 5), '...'; ?>',
-					start: '<?php echo $task->activation; ?>'                        // need to integrate time columns and make the dayclick() event change side tasks
+					allDay: false,
+					title: '<?php echo $emp->firstname, ' - ', substr($task->description, 0, 5); ?>',
+					start: '<?php echo $task->activation, ' ', $task->starttime; ?>',
+					end: '<?php echo $task->finishdate, ' ', $task->finishtime; ?>'
 				},
 			<?php
 			} //$task->tech == $emp->username
 		} //$tasks as $task
 	} //$emps as $emp
 	} //$username == 'admin'
-	else
+	elseif( $usertype == 'employee' ) {
 	foreach ( $tasks as $task )
 	{
-		if ( $task->tech == $username )
+		if ( $task->tech == $username)
 		{
 ?>
 			{
-				title: '<?php echo substr($task->description, 0, 15), '...'; ?>',
-				start: '<?php echo $task->activation; ?>'                        // need to integrate time columns and make the dayclick() event change side tasks
+				allDay: false,
+				title: '<?php echo substr($task->description, 0, 12); ?>',
+				start: '<?php echo $task->activation, ' ', $task->starttime; ?>',
+				end: '<?php echo $task->finishdate, ' ', $task->finishtime; ?>'
 			},
 		<?php
 		} //$task->tech == $emp->username
 	} //$tasks as $task
+	}
+	else {
+	foreach ( $tasks as $task )
+	{
+		if ( $task->client == $username)
+		{
+?>
+			{
+				allDay: false,
+				title: '<?php echo $task->firstname, ' ', $task->hours, 'hr'; ?>',
+				start: '<?php echo $task->activation, ' ', $task->starttime; ?>',
+				end: '<?php echo $task->finishdate, ' ', $task->finishtime; ?>'
+			},
+		<?php
+		} //$task->client == $username
+	} } //$tasks as $task
 	?>
 	]
 });
