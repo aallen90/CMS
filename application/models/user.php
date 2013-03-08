@@ -139,6 +139,16 @@ Class User extends CI_Model
 		return $query->result();
 	}
 	
+	function showffas()
+	{
+		$this -> db -> select('taskid, status, tech, client, description, activation');
+		$this -> db -> from('tasks, users');
+		$this -> db -> where('tech = ', 'ffa');
+		$query = $this -> db -> get();
+		
+		return $query->result();
+	}
+	
 	function showtaskbydate($date)
 	{
 		$this -> db -> select('t.taskid, t.status, t.tech, t.client, t.description, t.activation, t.starttime, t.finishdate, t.finishtime, t.tasktype, t.hours, u.firstname, u.username');

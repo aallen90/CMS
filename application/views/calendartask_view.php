@@ -40,29 +40,33 @@
 					<a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
 				<?php } } } ?>
 				
-				<!-- If user -->
+				<!-- If employee-->
 				
-				<?php if($usertype == 'employee')
-				{
-					foreach ($emps as $emp) {?>
+				<?php if($usertype == 'employee') {
+				foreach ($emps as $emp) { ?>
 					<h5><?php if($emp->finishdate == "Active"  && $emp->username == $username){echo $emp->firstname;} ?></h5>
 					<?php foreach ($tasks as $task) {?>
 					<?php if($task->tech == $emp->username && $task->tech == $username)
 						{		
 							if($task->status == 'completed')
 							{
-								?><i class="icon-chevron-right"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; ?></strong><br><?php
+								?><i class="icon-chevron-right"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs.'; ?></strong><br><?php
 							}
 							elseif($task->status == 'verified')
 							{
-								?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description, ' - ', $task->tasktype, ' - ' ?><strong><?php echo $task->hours, 'hrs.'; ?></strong><br><?php
+								?><i class="icon-check"></i> <?php echo $task->client, ' - ', $task->description, ' - ', $task->tasktype, ' - ' ?><strong><?php echo $task->hours, 'hrs. billed'; ?></strong><br><?php
 							}
 							elseif($task->status == 'active')
 							{
-								?><i class="icon-bell"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description; ?>  <a href="tasks" role="button" class="btn btn-mini btn-warning">Complete</a><!-- Modal Trigger --><br><?php
+								?><i class="icon-bell"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description; ?>  <a href="tasks" role="button" class="btn btn-mini btn-warning">Complete</a><br><?php
 							}
 						} 
 					}
+				} ?>
+				<h5>Free-For-All</h5>
+				<?php foreach ($ffas as $ffa )
+				{
+					?><i class="icon-bell"></i> <strong><?php echo $ffa->client; ?></strong><?php echo ' - ', $ffa->description; ?>  <a href="tasks" role="button" class="btn btn-mini btn-warning">Complete</a><br><?php
 				}
 				} ?>
 				

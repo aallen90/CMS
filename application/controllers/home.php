@@ -19,6 +19,7 @@ class Home extends CI_Controller
 			$data['usertype'] = $session_data['usertype'];
 			$this->load->model('user');
 			$data['tasks'] = $this->user->showtask();
+			$data['ffas'] = $this->user->showffas();
 			$data['emps'] = $this->user->viewemployees();
 			$data['clients'] = $this->user->viewclients();
 			$this->load->view('home_view', $data);
