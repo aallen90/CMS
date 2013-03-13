@@ -30,12 +30,10 @@ $('#calendar').fullCalendar ({
 		$('#selectedDay').hide().text($.fullCalendar.formatDate( date, 'MMMM d, yyyy' )).slideDown(200);
 		date = $.fullCalendar.formatDate( date, 'yyyy-MM-dd' )
 		//alert(date);
-		$.post ({
-			url: "tasks/showtaskbydate(date)",
-			data: date,
-			success: $('#dailytasks').html(data),
-			}
-		);
+		var url = 'tasks/showtaskbydate/' + date;
+		$.post(url, function(json) {
+				$('#dailytasks').html(json).slideDown(200);
+		});
     },
 	header: {
 		left: 'prev,next today',
@@ -62,6 +60,20 @@ $('#calendar').fullCalendar ({
 			} //$task->tech == $emp->username
 		} //$tasks as $task
 	} //$emps as $emp
+	foreach ( $tasks as $task )
+		{
+			if ( $task->tech == 'admin')
+			{
+	?>
+				{
+					allDay: false,
+					title: '<?php echo $task->firstname, ' - ', substr($task->description, 0, 5); ?>',
+					start: '<?php echo $task->activation, ' ', $task->starttime; ?>',
+					end: '<?php echo $task->finishdate, ' ', $task->finishtime; ?>'
+				},
+			<?php
+			} //$task->tech == $emp->username
+		} //$tasks as $task
 	} //$username == 'admin'
 	elseif( $usertype == 'employee' ) {
 	foreach ( $tasks as $task )
@@ -98,6 +110,7 @@ $('#calendar').fullCalendar ({
 	]
 });
 });
+
 </script>	
 </head>
 <body>

@@ -3,21 +3,22 @@
 				echo "$selectedday[month] $selectedday[mday], $selectedday[year]" ?></h4>
 				<div id="dailytasks">
 				<?php if($username == 'admin')
-				{ ?>
+				{ $hrs = 0; $hrsbilled = 0 ?>
 				<h5>Jerry</h5>
+
 				<?php foreach ($tasks as $task) {?>
 					<?php if($task->tech == 'admin')
 						{		
 							if($task->status == 'completed')
 							{
-								?><i class="icon-chevron-right"></i> <strong><?php echo $task->client ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs.'; ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
+								?><i class="icon-chevron-right"></i> <strong><?php echo $task->client ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs.'; $hrs += $task->hours ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Verify</a><br><?php
 							}
 							elseif($task->status == 'verified')
 							{
-								?><i class="icon-check"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-mini btn-success" data-toggle="modal">Edit</a><br><?php
+								?><i class="icon-check"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; $hrsbilled += $task->hours ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-mini btn-success" data-toggle="modal">Edit</a><br><?php
 							}
-						}
-					} ?>
+						} 
+					} ?> <h5><strong>&nbsp;&nbsp;&nbsp;&nbsp;Totals:</strong></h5><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $hrs, ' hours - ', $hrsbilled, ' hours billed'; ?>
 				<?php foreach ($emps as $emp) {?>
 					<h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
 					<?php foreach ($tasks as $task) {?>
