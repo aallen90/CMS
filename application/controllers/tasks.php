@@ -77,7 +77,7 @@ class Tasks extends CI_Controller
 		if($tasks == TRUE) {
 		if($username == 'admin')
 		{ 
-			$hrs = 0; $hrsbilled = 0 ?>
+			$hrs = 0.0; $hrsbilled = 0.0 ?>
 			<h5>Jerry</h5>
 
 			<?php foreach ($tasks as $task) {?>
@@ -92,7 +92,7 @@ class Tasks extends CI_Controller
 							?><i class="icon-check"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; $hrsbilled += $task->hours ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-mini btn-success" data-toggle="modal">Edit</a><br><?php
 						}
 					} 
-				} ?> <h5><strong>&nbsp;&nbsp;&nbsp;&nbsp;Totals:</strong></h5><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $hrs, ' hours - ', $hrsbilled, ' hours billed'; ?>
+				} ?>
 				<?php foreach ($emps as $emp) {?>
 					<h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
 					<?php foreach ($tasks as $task) {?>
@@ -112,7 +112,7 @@ class Tasks extends CI_Controller
 							}
 						}?>
 					<?php } if($emp->finishdate == 'Active') { ?>
-					<a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
+					&nbsp;&nbsp;<a href="#assignModal<?php echo $emp->id ?>" role="button" class="btn btn-small btn-inverse" data-toggle="modal">Assign a task</a><!-- Modal Trigger -->
 				<?php } } 
 		} ?>
 				
@@ -158,8 +158,7 @@ class Tasks extends CI_Controller
 				
 		
 		
-        // $this->output->set_content_type('application/json')->set_output(json_encode($tasks));
-		 //return $tasks;
+        // $this->output->set_content_type('application/json')->set_output(json_encode($tasks)); FOR API Access
 		}
 		elseif($tasks == FALSE)
 		{

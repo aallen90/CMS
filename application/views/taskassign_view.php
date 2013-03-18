@@ -30,7 +30,7 @@
 				<div class="control-group">
 					<label class="control-label" for="descripassign">Description</label>
 					<div class="controls">
-						<textarea name="descripassign" id="descripassign" rows="4" placeholder="Please enter in a description..."></textarea>
+						<textarea name="descripassign" id="descripassign" rows="8" placeholder="Please enter in a description..."></textarea>
 					</div>
 				</div>
 				<div class="control-group">

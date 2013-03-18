@@ -67,7 +67,7 @@
 					<div class="control-group">
 						<label class="control-label" for="descripcomplete">Description</label>
 						<div class="controls">
-						<textarea name="descripcomplete" id="descripcomplete" rows="4" placeholder="Please enter in a detailed description of what you did..."></textarea>
+						<textarea name="descripcomplete" id="descripcomplete" rows="8" placeholder="Please enter in a detailed description of what you did..."></textarea>
 						<span class="help-block">You may also select a predefined action below to save time.</span>
 							<table class="span3">
 								<tr><td>

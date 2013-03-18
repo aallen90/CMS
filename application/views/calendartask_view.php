@@ -2,11 +2,13 @@
 			<h4 id="selectedDay"><?php $selectedday=getdate();
 				echo "$selectedday[month] $selectedday[mday], $selectedday[year]" ?></h4>
 				<div id="dailytasks">
-				<?php if($username == 'admin')
+				
+				<?php if($todaytasks == TRUE) {
+				if($username == 'admin')
 				{ $hrs = 0; $hrsbilled = 0 ?>
 				<h5>Jerry</h5>
 
-				<?php foreach ($tasks as $task) {?>
+				<?php foreach ($todaytasks as $task) {?>
 					<?php if($task->tech == 'admin')
 						{		
 							if($task->status == 'completed')
@@ -18,10 +20,10 @@
 								?><i class="icon-check"></i> <strong><?php echo $task->client; ?></strong><?php echo ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; $hrsbilled += $task->hours ?></strong> <a href="#verifyTask<?php echo $task->taskid ?>" role="button" class="btn btn-mini btn-success" data-toggle="modal">Edit</a><br><?php
 							}
 						} 
-					} ?> <h5><strong>&nbsp;&nbsp;&nbsp;&nbsp;Totals:</strong></h5><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $hrs, ' hours - ', $hrsbilled, ' hours billed'; ?>
+					} ?>
 				<?php foreach ($emps as $emp) {?>
 					<h5><?php if($emp->finishdate == "Active"){echo $emp->firstname;} ?></h5>
-					<?php foreach ($tasks as $task) {?>
+					<?php foreach ($todaytasks as $task) {?>
 					<?php if($task->tech == $emp->username)
 						{		
 							if($task->status == 'completed')
@@ -46,7 +48,7 @@
 				<?php if($usertype == 'employee') {
 				foreach ($emps as $emp) { ?>
 					<h5><?php if($emp->finishdate == "Active"  && $emp->username == $username){echo $emp->firstname;} ?></h5>
-					<?php foreach ($tasks as $task) {?>
+					<?php foreach ($todaytasks as $task) {?>
 					<?php if($task->tech == $emp->username && $task->tech == $username)
 						{		
 							if($task->status == 'completed')
@@ -73,12 +75,13 @@
 				
 				<!-- If client -->
 				<?php if($usertype == 'client') {
-				foreach ($tasks as $task) {
+				foreach ($todaytasks as $task) {
 					if($task->status == 'verified' && $task->client == $username)
 						{
 							?><i class="icon-check"></i> <?php echo $task->firstname, ' - ', $task->description, ' - ', $task->tasktype; ?><strong><?php echo ' - ', $task->hours, 'hrs. billed'; ?></strong><br><?php
 						}
 					}
+				}
 				}
 				?>
 				</div> <!-- /dailytasks-->
@@ -111,7 +114,7 @@
 			<div class="control-group">
 				<label class="control-label" for="descripassign">Description</label>
 				<div class="controls">
-					<textarea name="descripassign" id="descripassign<?php echo $emp->id ?>" rows="4" placeholder="Please enter in a description..."></textarea>
+					<textarea name="descripassign" id="descripassign<?php echo $emp->id ?>" rows="8" placeholder="Please enter in a description..."></textarea>
 				</div>
 			</div>
 			<div class="control-group">
@@ -193,7 +196,7 @@
 			<div class="control-group">
 				<label class="control-label" for="descripcomplete">Description</label>
 				<div class="controls">
-				<textarea name="descripcomplete" id="descripcomplete" rows="4"><?php echo $task->description ?></textarea>
+				<textarea name="descripcomplete" id="descripcomplete" rows="8"><?php echo $task->description ?></textarea>
 					<table class="span3">
 						<tr><td>
 							<label class="checkbox" id="build" rel="tooltip" data-placement="bottom" title="Taking out of box, setup on desk. Configured PC to Domain. Registered PC, Ran Updates, etc..."><input type="checkbox" > PC-Build</label>

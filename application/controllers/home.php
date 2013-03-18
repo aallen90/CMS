@@ -9,29 +9,31 @@ class Home extends CI_Controller
 		parent::__construct();
 	}
 
-	function index()
-	{
-		if($this->session->userdata('logged_in'))
-		{
-			$session_data = $this->session->userdata('logged_in');
-			$data['username'] = $session_data['username'];
-			$data['firstname'] = $session_data['firstname'];
-			$data['usertype'] = $session_data['usertype'];
-			$this->load->model('user');
-			$data['tasks'] = $this->user->showtask();
-			$data['ffas'] = $this->user->showffas();
-			$data['emps'] = $this->user->viewemployees();
-			$data['clients'] = $this->user->viewclients();
-			$this->load->view('home_view', $data);
-			$this->load->view('calendartask_view', $data);
-			$this->load->view('footer_view', $data);
-		}
-		else
-		{
-		//If no session, redirect to login page
-			redirect('login', 'refresh');
-		}
-	}
+function index()
+    {
+        if($this->session->userdata('logged_in'))
+        {
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+            $data['firstname'] = $session_data['firstname'];
+            $data['usertype'] = $session_data['usertype'];
+            $this->load->model('user');
+            $data['tasks'] = $this->user->showtask();
+			$date = date("Y-m-d");
+			$data['todaytasks'] = $this->user->showtaskbydate($date);
+            $data['ffas'] = $this->user->showffas();
+            $data['emps'] = $this->user->viewemployees();
+            $data['clients'] = $this->user->viewclients();
+            $this->load->view('home_view', $data);
+            $this->load->view('calendartask_view', $data);
+            $this->load->view('footer_view', $data);
+        }
+        else
+        {
+        //If no session, redirect to login page
+            redirect('login', 'refresh');
+        }
+    }
 	
 	function calendar()
 	{
