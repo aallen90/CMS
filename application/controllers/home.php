@@ -35,11 +35,6 @@ function index()
         }
     }
 	
-	function calendar()
-	{
-		
-	}
-	
 	function assigntask()
 	{
 		$this->load->model('user');

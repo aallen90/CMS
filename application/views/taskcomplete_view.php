@@ -1,6 +1,8 @@
 <div class="span5">
 			<h2>Complete a Task</h2>
 				<form class="form-horizontal" action="tasks/completetask" method="post"><h5>Fill out the form below to complete a task.</h5>
+					<?php if ( $usertype == 'employee' )
+					{ ?>
 					<div class="control-group">
 						<label class="control-label" for="taskid">Assigned task</label>
 						<div class="controls">
@@ -17,6 +19,7 @@
 							</select>
 						</div>
 					</div>
+					<?php } ?>
 					<div class="control-group">
 						<label class="control-label" for="clientcomplete">Select the Client</label>
 						<div class="controls">

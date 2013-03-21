@@ -169,4 +169,30 @@ Class User extends CI_Model
         $this->db->where('taskid', $_POST['taskid']);
         $this->db->update('tasks', $data);
     }
+	
+	function showservicelogs()
+	{
+		$this -> db -> select('t.taskid, t.status, t.tech, t.client, t.description, t.activation, t.starttime, t.finishdate, t.finishtime, t.tasktype, t.hours, u.firstname, u.username');
+		$this -> db -> from('tasks AS t, users AS u');
+		$this -> db -> where('u.username = t.tech');
+		$this -> db -> order_by("finishdate", "asc");
+		$query = $this -> db -> get();
+		
+		return $query->result();
+	}
+	
+	function showservicelogrange($first_date, $second_date)
+	{
+		$this -> db -> select('t.taskid, t.status, t.tech, t.client, t.description, t.activation, t.starttime, t.finishdate, t.finishtime, t.tasktype, t.hours, u.firstname, u.username');
+		$this -> db -> from('tasks AS t, users AS u');
+		$this -> db -> where('u.username = t.tech');
+		$this -> db -> where('t.status =', 'verified');
+		$this -> db -> where('t.finishdate >=', $first_date);
+		$this -> db -> where('t.finishdate <=', $second_date);
+		$this -> db -> order_by("finishdate", "asc");
+		$query = $this -> db -> get();
+		
+		return $query->result();
+	}
+	
 }?>

@@ -83,6 +83,10 @@
 					}
 				}
 				}
+				else
+				{
+					?><h5>No Tasks For Today</h5><?php
+				}
 				?>
 				</div> <!-- /dailytasks-->
 		</div> <!-- /Tasks -->

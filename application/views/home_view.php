@@ -28,8 +28,7 @@ var y = date.getFullYear();
 $('#calendar').fullCalendar ({
 	dayClick: function(date, allDay, jsEvent, view) {
 		$('#selectedDay').hide().text($.fullCalendar.formatDate( date, 'MMMM d, yyyy' )).slideDown(200);
-		date = $.fullCalendar.formatDate( date, 'yyyy-MM-dd' )
-		//alert(date);
+		date = $.fullCalendar.formatDate( date, 'yyyy-MM-dd' );
 		var url = 'tasks/showtaskbydate/' + date;
 		$.post(url, function(json) {
 				$('#dailytasks').html(json).slideDown(200);

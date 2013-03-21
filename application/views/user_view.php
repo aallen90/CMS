@@ -9,8 +9,9 @@
 
     <!-- Le styles -->
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">	
+	<link href="assets/css/datepicker.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +21,8 @@
 	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   </head>
   <body>
-     <div class="navbar navbar-inverse navbar-fixed-top">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -28,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;YIT Works</a>
+          <a class="brand active" href="home">&nbsp;&nbsp;&nbsp;&nbsp;YIT Works</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
 				<li><a href="home">Calendar</a></li>
@@ -38,7 +40,7 @@
 				}
 				elseif($usertype == 'employee')
 				{
-					echo '<li><a href="tasks">Tasks</a></li>';
+					echo '<li class="active"><a href="tasks">Tasks</a></li>';
 				}
 				else
 				{
@@ -56,7 +58,7 @@
       </div>
     </div>
 <div class="container">
-	<div class="row"> <!-- Reports-->
+	<div class="row">
 		<div class="span12">
 			<h2>Users</h2>
 			<h4>&nbsp;Employees</h4>

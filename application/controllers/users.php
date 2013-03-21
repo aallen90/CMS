@@ -20,6 +20,7 @@ class Users extends CI_Controller
 			$this->load->model('user');
 			$data['emps'] = $this->user->viewemployees();
 			$data['clients'] = $this->user->viewclients();
+			$this->load->view('header_view', $data);
 			$this->load->view('user_view', $data);
 			$this->load->view('footer_view', $data);
 		}
