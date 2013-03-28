@@ -18,7 +18,7 @@ function index()
             $data['firstname'] = $session_data['firstname'];
             $data['usertype'] = $session_data['usertype'];
             $this->load->model('user');
-            $data['tasks'] = $this->user->showtask();
+            $data['terms'] = $this->user->showterms();
             $this->load->view('terms_view', $data);
             $this->load->view('footer_view', $data);
         }
@@ -35,4 +35,27 @@ function index()
 		session_destroy();
 		redirect('login', 'refresh');
 	}
+	
+	function editterm()
+	{
+		$this->load->model('user');
+		$this->user->editterm();
+		redirect('terms', 'refresh');
+	}
+	
+	function addterm()
+	{
+		$this->load->model('user');
+		$this->user->addterm();
+		redirect('terms', 'refresh');
+	}
+	
+	function removeterm($id)
+	{
+		$this->load->model('user');
+		$this->user->removeterm($id);
+		redirect('terms', 'refresh');		
+	}
+	
+	
 }?>

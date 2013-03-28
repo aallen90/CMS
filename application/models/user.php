@@ -194,5 +194,35 @@ Class User extends CI_Model
 		
 		return $query->result();
 	}
+		
+	function showterms()
+	{
+		$this -> db -> select('termid, term, description');
+		$this -> db -> from('terms');
+		$this -> db -> order_by('term');
+		$query = $this -> db -> get();
+		
+		return $query->result();
+	}
+	
+	function editterm()
+	{
+		$data = array('term' => $_POST['term'], 'description' => $_POST['description']);
+
+		$this->db->where('termid', $_POST['termid']);
+		$this->db->update('terms', $data);
+	}
+	
+	function addterm()
+	{
+		$data = array('term' => $_POST['term'], 'description' => $_POST['description']);
+		$this->db->insert('terms', $data);
+	}
+	
+	function removeterm($termid)
+	{
+		$this->db->delete('terms', array('termid' => $termid)); 
+	}
+	
 	
 }?>

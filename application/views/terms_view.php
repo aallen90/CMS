@@ -63,9 +63,94 @@
 		<div class="span12">
 			<h2>Terms</h2>
 			<h4>Manage terms for quick task entry.</h4>
-		</div> <!-- /Unverified task report -->
+			<div><a href="#addTerm" role="button" class="btn btn-success" data-toggle="modal">Add Another Term</a></div><br>
+			<table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>Term</th>
+                  <th>Description</th>
+				  <th>Modify</th>
+                </tr>
+              </thead>
+              <tbody>
+				      <?php foreach ($terms as $term) { ?>
+						<tr>
+						  <td><?php echo $term->term; ?></td>
+						  <td><?php echo $term->description; ?></td>
+						  <td><a href="#editTerm<?php echo $term->termid;?>" role="button" class="btn btn-small btn-info" data-toggle="modal">Edit</a><!-- Modal Trigger -->
+						  <a href="terms/removeterm/<?php echo $term->termid; ?>" class="btn btn-small btn-danger">Remove</a>
+							</td>
+						</tr>    
+						<?php } ?>
+              </tbody>
+            </table>
+		
+		</div> <!-- /Term table -->
 	</div> <!-- /row -->
+	
+<!-- Modals -->
+<?php foreach ($terms as $term) { ?>
+<!-- Edit Term Modal -->
+<div id="editTerm<?php echo $term->termid;?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <form class="modal-form form-horizontal" action="terms/editterm" method="post">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Edit <?php echo $term->term;?></h3>
+  </div>
+  <div class="modal-body">
+    <h5>Use the form below to edit the term.</h5>
+		<div class="control-group">
+			<label class="control-label" for="term<?php echo $term->termid;?>">Term</label>
+			<div class="controls">
+				<input name="term" id="term<?php echo $term->termid;?>" type="text" value="<?php echo $term->term; ?>">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="description<?php echo $term->description;?>">Description</label>
+			<div class="controls">
+				<textarea name="description" id="description<?php echo $term->description;?>" rows="4"><?php echo $term->description;?></textarea>
+				<input name="termid" class="hide" value="<?php echo $term->termid;?>" />
+			</div>
+		</div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+  </div>
+  </form>
+</div>
+<?php } ?>
 
+
+<!-- Add Term -->
+
+<div id="addTerm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<form class="modal-form form-horizontal" action="terms/addterm" method="post"> 
+ <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Add a new term</h3>
+  </div>
+  <div class="modal-body">
+    <form class=" form-horizontal"><h5>Use the form below to add a new term.</h5>
+		<div class="control-group">
+			<label class="control-label" for="term">Term</label>
+			<div class="controls">
+				<input name="term" id="term" type="text">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="description">Description</label>
+			<div class="controls">
+				<textarea name="description" id="description" rows="4"></textarea>
+			</div>
+		</div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <input type="submit" value="Add Term" class="btn btn-primary" />
+  </div>
+  </form>
+</div>
 	
 </div> <!-- /container -->
 
