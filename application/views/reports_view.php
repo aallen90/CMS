@@ -81,6 +81,7 @@ function getreports() {
 				{
 					echo '<li><a href="tasks">Tasks</a></li>';
 					echo '<li class="active"><a href="reports">Reports</a></li>';
+					echo '<li><a href="terms">Term Management</a></li>';
 					echo '<li><a href="users">Users</a></li>';
 				}?>
             </ul>

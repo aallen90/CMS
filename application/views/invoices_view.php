@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Tasks &middot; YIT Works</title>
+    <title>Reports &middot; YIT Works</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -18,7 +18,7 @@
     <![endif]-->
 	
 	<!-- Le scripts -->
-	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>	
   </head>
   <body>
 
@@ -34,21 +34,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
 				<li><a href="home">Calendar</a></li>
-				<?php if($usertype == 'client')
-				{
-					echo '<li><a href="invoices">Invoices</a></li>';
-				}
-				elseif($usertype == 'employee')
-				{
-					echo '<li class="active"><a href="tasks">Tasks</a></li>';
-				}
-				else
-				{
-					echo '<li class="active"><a href="tasks">Tasks</a></li>';
-					echo '<li><a href="reports">Reports</a></li>';
-					echo '<li><a href="terms">Term Management</a></li>';
-					echo '<li><a href="users">Users</a></li>';
-				}?>
+				<li class="active"><a href="invoices">Invoices</a></li>';
             </ul>
 			<ul class="nav pull-right">
 				<li><a><?php echo "Welcome $firstname!";  ?></a></li>
@@ -60,3 +46,11 @@
     </div>
 <div class="container">
 	<div class="row">
+		<div class="span12">
+			<h2>Invoices</h2>
+
+		</div>
+	</div> <!-- /row -->
+
+	
+</div> <!-- /container -->

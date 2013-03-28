@@ -89,7 +89,7 @@ $('#calendar').fullCalendar ({
 		<?php
 		} //$task->tech == $emp->username
 	} //$tasks as $task
-	}
+	} 
 	else {
 	foreach ( $tasks as $task )
 	{
@@ -137,6 +137,7 @@ $('#calendar').fullCalendar ({
 					{
 						echo '<li><a href="tasks">Tasks</a></li>';
 						echo '<li><a href="reports">Reports</a></li>';
+						echo '<li><a href="terms">Term Management</a></li>';
 						echo '<li><a href="users">Users</a></li>';
 					}?>
 				</ul>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Tasks &middot; YIT Works</title>
+    <title>Term Management &middot; YIT Works</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -18,7 +18,7 @@
     <![endif]-->
 	
 	<!-- Le scripts -->
-	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>	
   </head>
   <body>
 
@@ -44,9 +44,9 @@
 				}
 				else
 				{
-					echo '<li class="active"><a href="tasks">Tasks</a></li>';
+					echo '<li><a href="tasks">Tasks</a></li>';
 					echo '<li><a href="reports">Reports</a></li>';
-					echo '<li><a href="terms">Term Management</a></li>';
+					echo '<li class="active"><a href="#">Term Management</a></li>';
 					echo '<li><a href="users">Users</a></li>';
 				}?>
             </ul>
@@ -60,3 +60,12 @@
     </div>
 <div class="container">
 	<div class="row">
+		<div class="span12">
+			<h2>Terms</h2>
+			<h4>Manage terms for quick task entry.</h4>
+		</div> <!-- /Unverified task report -->
+	</div> <!-- /row -->
+
+	
+</div> <!-- /container -->
+
